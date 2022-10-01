@@ -54,7 +54,18 @@ def test_translate_m():
 
 def test_transform_multi_numbers():
     # Translate Roman combined numerals to series of numbers
+    # and calculate them
     translator = RomanNumeralTranslator()
 
-    result = translator.transform_multi_numbers('ii')
-    assert result == [1, 1]
+    result = translator.calculate_multi_numbers('ii')
+    assert result == 2
+
+    result = translator.calculate_multi_numbers('xx')
+    assert result == 20
+
+    result = translator.calculate_multi_numbers('dx')
+    assert result == 510
+
+    result = translator.calculate_multi_numbers('mdclxvi')
+    assert result == 1666
+

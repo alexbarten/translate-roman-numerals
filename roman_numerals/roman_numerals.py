@@ -17,9 +17,12 @@ class RomanNumeralTranslator:
             answer = 1000
         return answer
 
-    def transform_multi_numbers(self, roman_number):
+    def calculate_multi_numbers(self, roman_number):
         translation_list = []
+        answer = 0
         for symbol in roman_number:
             translation_list.append(self.translate(symbol))
 
-        return translation_list
+        answer = sum((i) for i in translation_list)
+
+        return answer
