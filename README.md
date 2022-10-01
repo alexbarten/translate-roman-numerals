@@ -1,2 +1,3 @@
-# tdd-katas-python
-A number of TDD-katas using Python
+# translate-roman-numerals 
+
+A Python class to translate Roman numerals to Arabic numbers.
