@@ -59,6 +59,13 @@ def test_validate_each_numeral():
     assert result is None
 
 
+def test_lower_case_single_input():
+    translator = RomanNumeralTranslator()
+
+    result = translator.translate('i')
+    assert result == 1
+
+
 def test_transform_multi_numbers():
     # Translate Roman combined numerals to series of numbers
     # and calculate them
@@ -75,6 +82,7 @@ def test_transform_multi_numbers():
 
     result = translator.calculate_multi_numbers('MDCLXVI')
     assert result == 1666
+
 
 # TODO: Add exception handling: illegal characters, illegal combinations
 #       like 'VV', 'IL'.
