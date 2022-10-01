@@ -52,9 +52,9 @@ def test_translate_m():
     assert result == 1000
 
 
-def test_translate_two_digits_into_list():
-    # Put Roman combined numerals in a list
+def test_transform_multi_numbers():
+    # Translate Roman combined numerals to series of numbers
     translator = RomanNumeralTranslator()
 
-    result = translator.translate_two('ii')
-    assert result == ['i', 'i']
+    result = translator.transform_multi_numbers('ii')
+    assert result == [1, 1]

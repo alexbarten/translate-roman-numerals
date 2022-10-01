@@ -17,9 +17,9 @@ class RomanNumeralTranslator:
             answer = 1000
         return answer
 
-    def translate_two(self, roman_number):
+    def transform_multi_numbers(self, roman_number):
         translation_list = []
         for symbol in roman_number:
-            translation_list.append(symbol)
+            translation_list.append(self.translate(symbol))
 
         return translation_list
