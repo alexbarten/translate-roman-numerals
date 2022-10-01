@@ -84,6 +84,13 @@ def test_transform_multi_numbers():
     assert result == 1666
 
 
+def test_lower_case_multi_input():
+    translator = RomanNumeralTranslator()
+
+    result = translator.calculate_multi_numbers('xvi')
+    assert result == 16
+
+
 # TODO: Add exception handling: illegal characters, illegal combinations
 #       like 'VV', 'IL'.
 # TODO: Add handling of smaller numerals that make subsequent larger
