@@ -68,4 +68,3 @@ def test_transform_multi_numbers():
 
     result = translator.calculate_multi_numbers('mdclxvi')
     assert result == 1666
-

@@ -1,8 +1,9 @@
 class RomanNumeralTranslator:
     def translate(self, roman_number):
         answer = None
+        roman_number_table = {'i': 1}
         if roman_number == 'i':
-            answer = 1
+            answer = roman_number_table.get('i')
         elif roman_number == 'v':
             answer = 5
         elif roman_number == 'x':
