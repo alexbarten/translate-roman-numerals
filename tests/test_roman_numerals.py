@@ -52,6 +52,13 @@ def test_translate_m():
     assert result == 1000
 
 
+def test_validate_each_numeral():
+    translator = RomanNumeralTranslator()
+
+    result = translator.translate('j')
+    assert result is None
+
+
 def test_transform_multi_numbers():
     # Translate Roman combined numerals to series of numbers
     # and calculate them

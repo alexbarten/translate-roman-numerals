@@ -5,6 +5,7 @@ class RomanNumeralTranslator:
 
         return roman_number_table.get(roman_number)
 
+
     def calculate_multi_numbers(self, roman_number):
         translation_list = []
         answer = 0
