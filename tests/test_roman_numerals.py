@@ -68,3 +68,8 @@ def test_transform_multi_numbers():
 
     result = translator.calculate_multi_numbers('mdclxvi')
     assert result == 1666
+
+# TODO: Add exception handling: illegal characters, illegal combinations
+#       like 'vv', 'il'.
+# TODO: Add handling of smaller numerals that make subsequent larger
+#       numeral smaller (like iv, ix, cm).
