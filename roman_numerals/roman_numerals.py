@@ -8,12 +8,12 @@ class RomanNumeralTranslator:
 
     def calculate_multi_numbers(self, roman_number):
         translation_list = []
-        answer = 0
+        result = 0
         for symbol in roman_number:
             translation_list.append(self.translate(symbol))
 
         try:
-            answer = sum((i) for i in translation_list)
-            return answer
+            result = sum((i) for i in translation_list)
+            return result
         except TypeError:
             return None
