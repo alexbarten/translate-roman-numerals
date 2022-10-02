@@ -53,6 +53,8 @@ def test_translate_m():
 
 
 def test_validate_each_numeral():
+    # By design, a non-Roman numeral will not be translated, hence
+    # the translation result will be None.
     translator = RomanNumeralTranslator()
 
     result = translator.translate('J')
