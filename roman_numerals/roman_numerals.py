@@ -8,7 +8,6 @@ class RomanNumeralTranslator:
 
     def calculate_multi_numbers(self, roman_number):
         translation_list = []
-        result = 0
         for symbol in roman_number:
             translation_list.append(self.translate(symbol))
 
@@ -19,7 +18,7 @@ class RomanNumeralTranslator:
                     if translation_list[pos-1] < translation_list[pos]:
                         translation_list[pos-1] = -translation_list[pos-1]
                 pos += 1
-            result = sum((number) for number in translation_list)
-            return result
+            return sum((number) for number in translation_list)
+
         except TypeError:
             return None
