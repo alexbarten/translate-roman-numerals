@@ -87,7 +87,9 @@ def test_transform_multi_numbers():
 
 
 def test_partial_invalid_multi_numbers():
-    # If we cannot summarize the values because of one or more
+    # If we cannot summarize the values because of one or more illegal
+    # numerals, we want the result to be None.
+
     translator = RomanNumeralTranslator()
 
     result = translator.calculate_multi_numbers('Ij')
@@ -95,6 +97,9 @@ def test_partial_invalid_multi_numbers():
 
 
 def test_fully_invalid_multi_numbers():
+    # If we cannot summarize the values because of one or more illegal
+    # numerals, we want the result to be None.
+
     translator = RomanNumeralTranslator()
 
     result = translator.calculate_multi_numbers('ajb')
