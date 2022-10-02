@@ -87,6 +87,7 @@ def test_transform_multi_numbers():
 
 
 def test_partial_invalid_multi_numbers():
+    # If we cannot summarize the values because of one or more
     translator = RomanNumeralTranslator()
 
     result = translator.calculate_multi_numbers('Ij')
@@ -113,6 +114,21 @@ def test_subtractive_notation():
 
     result = translator.calculate_multi_numbers('iv')
     assert result == 4
+
+    result = translator.calculate_multi_numbers('ix')
+    assert result == 9
+
+    result = translator.calculate_multi_numbers('xl')
+    assert result == 40
+
+    result = translator.calculate_multi_numbers('xc')
+    assert result == 90
+
+    result = translator.calculate_multi_numbers('cd')
+    assert result == 400
+
+    result = translator.calculate_multi_numbers('cm')
+    assert result == 900
 
 # TODO: Add exception handling: illegal combinations
 #       like 'VV', 'IL'.
