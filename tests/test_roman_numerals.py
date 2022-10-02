@@ -93,6 +93,13 @@ def test_partial_invalid_multi_numbers():
     assert result is None
 
 
+def test_fully_invalid_multi_numbers():
+    translator = RomanNumeralTranslator()
+
+    result = translator.calculate_multi_numbers('ajb')
+    assert result is None
+
+
 def test_lower_case_multi_input():
     translator = RomanNumeralTranslator()
 
