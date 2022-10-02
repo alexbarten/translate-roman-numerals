@@ -107,8 +107,13 @@ def test_lower_case_multi_input():
     assert result == 16
 
 
-# TODO: Add exception handling: illegal characters, illegal combinations
+def test_subtractive_notation():
+    # Valid combinations are: IV, IX, XL, XC, CD, CM
+    translator = RomanNumeralTranslator()
+
+    result = translator.calculate_multi_numbers('iv')
+    assert result == 4
+
+# TODO: Add exception handling: illegal combinations
 #       like 'VV', 'IL'.
-# TODO: Add handling of smaller numerals that make subsequent larger
-#       numeral smaller (like IV, IX, XM).
 # TODO: Transform from Arabic numbers to Roman numbers.

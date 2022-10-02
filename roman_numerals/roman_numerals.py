@@ -13,7 +13,13 @@ class RomanNumeralTranslator:
             translation_list.append(self.translate(symbol))
 
         try:
-            result = sum((i) for i in translation_list)
+            pos = 0
+            for number in translation_list:
+                if pos > 0:
+                    if translation_list[pos-1] < translation_list[pos]:
+                        translation_list[pos-1] = -translation_list[pos-1]
+                pos += 1
+            result = sum((number) for number in translation_list)
             return result
         except TypeError:
             return None
