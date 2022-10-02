@@ -12,6 +12,8 @@ class RomanNumeralTranslator:
         for symbol in roman_number:
             translation_list.append(self.translate(symbol))
 
-        answer = sum((i) for i in translation_list)
-
-        return answer
+        try:
+            answer = sum((i) for i in translation_list)
+            return answer
+        except TypeError:
+            return None

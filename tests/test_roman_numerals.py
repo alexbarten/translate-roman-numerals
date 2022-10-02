@@ -86,6 +86,13 @@ def test_transform_multi_numbers():
     assert result == 1666
 
 
+def test_partial_invalid_multi_numbers():
+    translator = RomanNumeralTranslator()
+
+    result = translator.calculate_multi_numbers('Ij')
+    assert result is None
+
+
 def test_lower_case_multi_input():
     translator = RomanNumeralTranslator()
 
