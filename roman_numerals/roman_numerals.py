@@ -1,5 +1,19 @@
 class RomanNumeralTranslator:
+    """ Translate Roman numbers into Arabic numbers.
+
+    This module is used to translate Roman numbers into Arabic numbers.
+    """
+
     def translate(self, roman_number):
+        """Translate a single Roman numeral into an Arabic number.
+
+        Args:
+            roman_number (string): a single roman numeral
+
+        Returns:
+            int: Arabic number - representing the value of the Roman
+            numeral
+        """
 
         roman_number_table = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100,
                               'D': 500, 'M': 1000}
