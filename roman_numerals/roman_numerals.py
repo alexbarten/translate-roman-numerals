@@ -6,9 +6,16 @@ class RomanNumeralTranslator:
 
         return roman_number_table.get(roman_number.upper())
 
-    def calculate_multi_numbers(self, roman_number):
+    def validate_multinumerals(self, multinumeral):
+        invalid_doubles = ['vv', 'll', 'dd']
+        if any(i in multinumeral for i in invalid_doubles):
+            return False
+        else:
+            return True
+
+    def calculate_numeral(self, numeral):
         translation_list = []
-        for symbol in roman_number:
+        for symbol in numeral:
             translation_list.append(self.translate(symbol))
 
         try:

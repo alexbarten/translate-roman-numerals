@@ -73,16 +73,16 @@ def test_transform_multi_numbers():
     # and calculate them
     translator = RomanNumeralTranslator()
 
-    result = translator.calculate_multi_numbers('II')
+    result = translator.calculate_numeral('II')
     assert result == 2
 
-    result = translator.calculate_multi_numbers('XX')
+    result = translator.calculate_numeral('XX')
     assert result == 20
 
-    result = translator.calculate_multi_numbers('DX')
+    result = translator.calculate_numeral('DX')
     assert result == 510
 
-    result = translator.calculate_multi_numbers('MDCLXVI')
+    result = translator.calculate_numeral('MDCLXVI')
     assert result == 1666
 
 
@@ -92,7 +92,7 @@ def test_partial_invalid_multi_numbers():
 
     translator = RomanNumeralTranslator()
 
-    result = translator.calculate_multi_numbers('Ij')
+    result = translator.calculate_numeral('Ij')
     assert result is None
 
 
@@ -102,37 +102,63 @@ def test_fully_invalid_multi_numbers():
 
     translator = RomanNumeralTranslator()
 
-    result = translator.calculate_multi_numbers('ajb')
+    result = translator.calculate_numeral('ajb')
     assert result is None
 
 
 def test_lower_case_multi_input():
     translator = RomanNumeralTranslator()
 
-    result = translator.calculate_multi_numbers('xvi')
+    result = translator.calculate_numeral('xvi')
     assert result == 16
+
+
+def test_invalid_multiples_of_5():
+    # Multiples of 5 (and 50, 500) are not allowed,
+    # because they would be a duplicate of the next Roman number.
+
+    translator = RomanNumeralTranslator()
+
+    result = translator.validate_multinumerals('vv')
+    assert result is False
+
+    result = translator.validate_multinumerals('ll')
+    assert result is False
+
+    result = translator.validate_multinumerals('dd')
+    assert result is False
+
+    result = translator.validate_multinumerals('cxvvi')
+    assert result is False
+
+
+def test_valid_multiples_of_5():
+    translator = RomanNumeralTranslator()
+
+    result = translator.validate_multinumerals('cxxvi')
+    assert result is True
 
 
 def test_subtractive_notation():
     # Valid combinations are: IV, IX, XL, XC, CD, CM
     translator = RomanNumeralTranslator()
 
-    result = translator.calculate_multi_numbers('iv')
+    result = translator.calculate_numeral('iv')
     assert result == 4
 
-    result = translator.calculate_multi_numbers('ix')
+    result = translator.calculate_numeral('ix')
     assert result == 9
 
-    result = translator.calculate_multi_numbers('xl')
+    result = translator.calculate_numeral('xl')
     assert result == 40
 
-    result = translator.calculate_multi_numbers('xc')
+    result = translator.calculate_numeral('xc')
     assert result == 90
 
-    result = translator.calculate_multi_numbers('cd')
+    result = translator.calculate_numeral('cd')
     assert result == 400
 
-    result = translator.calculate_multi_numbers('cm')
+    result = translator.calculate_numeral('cm')
     assert result == 900
 
 # TODO: Add exception handling: illegal combinations
