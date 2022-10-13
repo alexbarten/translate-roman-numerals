@@ -164,3 +164,4 @@ def test_subtractive_notation():
 # TODO: Add exception handling: illegal combinations
 #       like 'VV', 'IL'.
 # TODO: Transform from Arabic numbers to Roman numbers.
+# TODO: Enable the library to only validate Roman numbers.
