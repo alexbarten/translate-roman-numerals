@@ -68,7 +68,7 @@ def test_lower_case_single_input():
     assert result == 1
 
 
-def test_transform_multi_numbers():
+def test_transform_multi_numerals():
     # Translate Roman combined numerals to series of numbers
     # and calculate them
     translator = RomanNumeralTranslator()
@@ -86,7 +86,7 @@ def test_transform_multi_numbers():
     assert result == 1666
 
 
-def test_partial_invalid_multi_numbers():
+def test_partial_invalid_multi_numerals():
     # If we cannot summarize the values because of one or more illegal
     # numerals, we want the result to be None.
 
@@ -96,7 +96,7 @@ def test_partial_invalid_multi_numbers():
     assert result is None
 
 
-def test_fully_invalid_multi_numbers():
+def test_fully_invalid_multi_numerals():
     # If we cannot summarize the values because of one or more illegal
     # numerals, we want the result to be None.
 
@@ -115,7 +115,7 @@ def test_lower_case_multi_input():
 
 def test_invalid_multiples_of_5():
     # Multiples of 5 (and 50, 500) are not allowed,
-    # because they would be a duplicate of the next Roman number.
+    # because they would be a duplicate of the next Roman numeral.
 
     translator = RomanNumeralTranslator()
 
@@ -163,5 +163,5 @@ def test_subtractive_notation():
 
 # TODO: Add exception handling: illegal combinations
 #       like 'VV', 'IL'.
-# TODO: Transform from Arabic numbers to Roman numbers.
-# TODO: Enable the library to only validate Roman numbers.
+# TODO: Transform from Arabic numbers to Roman numerals.
+# TODO: Enable the library to only validate Roman numerals.
