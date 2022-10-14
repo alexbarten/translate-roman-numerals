@@ -4,7 +4,7 @@ class RomanNumeralTranslator:
     This module is used to translate Roman numerals into Arabic numbers.
     """
 
-    def translate(self, roman_numeral):
+    def _translate(self, roman_numeral):
         """Translate a single Roman numeral into an Arabic number.
 
         Args:
@@ -20,7 +20,7 @@ class RomanNumeralTranslator:
 
         return roman_numeral_table.get(roman_numeral.upper())
 
-    def validate_multinumerals(self, multinumeral):
+    def _validate_multinumerals(self, multinumeral):
         """Check if multinumeral is a valid Roman numeral.
 
         Check for invalid two-numeral combinations in a Roman numeral.
@@ -54,7 +54,7 @@ class RomanNumeralTranslator:
 
         translation_list = []
         for symbol in numeral:
-            translation_list.append(self.translate(symbol))
+            translation_list.append(self._translate(symbol))
 
         try:
             pos = 0

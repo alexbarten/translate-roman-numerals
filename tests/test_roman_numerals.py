@@ -6,49 +6,49 @@ from roman_numerals.roman_numerals import RomanNumeralTranslator
 def test_translate_i():
     translator = RomanNumeralTranslator()
 
-    result = translator.translate('I')
+    result = translator._translate('I')
     assert result == 1
 
 
 def test_translate_v():
     translator = RomanNumeralTranslator()
 
-    result = translator.translate('V')
+    result = translator._translate('V')
     assert result == 5
 
 
 def test_translate_x():
     translator = RomanNumeralTranslator()
 
-    result = translator.translate('X')
+    result = translator._translate('X')
     assert result == 10
 
 
 def test_translate_l():
     translator = RomanNumeralTranslator()
 
-    result = translator.translate('L')
+    result = translator._translate('L')
     assert result == 50
 
 
 def test_translate_c():
     translator = RomanNumeralTranslator()
 
-    result = translator.translate('C')
+    result = translator._translate('C')
     assert result == 100
 
 
 def test_translate_d():
     translator = RomanNumeralTranslator()
 
-    result = translator.translate('D')
+    result = translator._translate('D')
     assert result == 500
 
 
 def test_translate_m():
     translator = RomanNumeralTranslator()
 
-    result = translator.translate('M')
+    result = translator._translate('M')
     assert result == 1000
 
 
@@ -57,14 +57,14 @@ def test_validate_each_numeral():
     # the translation result will be None.
     translator = RomanNumeralTranslator()
 
-    result = translator.translate('J')
+    result = translator._translate('J')
     assert result is None
 
 
 def test_lower_case_single_input():
     translator = RomanNumeralTranslator()
 
-    result = translator.translate('i')
+    result = translator._translate('i')
     assert result == 1
 
 
@@ -119,23 +119,23 @@ def test_invalid_multiples_of_5():
 
     translator = RomanNumeralTranslator()
 
-    result = translator.validate_multinumerals('vv')
+    result = translator._validate_multinumerals('vv')
     assert result is False
 
-    result = translator.validate_multinumerals('ll')
+    result = translator._validate_multinumerals('ll')
     assert result is False
 
-    result = translator.validate_multinumerals('dd')
+    result = translator._validate_multinumerals('dd')
     assert result is False
 
-    result = translator.validate_multinumerals('cxvvi')
+    result = translator._validate_multinumerals('cxvvi')
     assert result is False
 
 
 def test_valid_multiples_of_5():
     translator = RomanNumeralTranslator()
 
-    result = translator.validate_multinumerals('cxxvi')
+    result = translator._validate_multinumerals('cxxvi')
     assert result is True
 
 
