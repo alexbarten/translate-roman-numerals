@@ -40,9 +40,9 @@ The module does not return exceptions.
 
 ## Future ideas and improvements
 
-TODO: Refactor tests with pytest (combine calls).
-TODO: Add exception handling: illegal combinations
-      like 'VV', 'IL'. We should still give back None, but we might
-      raise an exception or add a return code as well...
-TODO: Transform from Arabic numbers to Roman numerals.
-TODO: Enable the library to only validate Roman numerals.
+TODO: Refactor tests with pytest (combine calls).  
+TODO: Add exception handling: illegal combinations  
+      like 'VV', 'IL'. We should still give back None, but we might  
+      raise an exception or add a return code as well...  
+TODO: Transform from Arabic numbers to Roman numerals.  
+TODO: Enable the library to only validate Roman numerals.  
