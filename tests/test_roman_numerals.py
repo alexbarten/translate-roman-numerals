@@ -160,9 +160,3 @@ def test_subtractive_notation():
 
     result = translator.calculate_numeral('cm')
     assert result == 900
-
-# TODO: Add exception handling: illegal combinations
-#       like 'VV', 'IL'. We should still give back None, but we might
-#       raise an exception or add a return code as well...
-# TODO: Transform from Arabic numbers to Roman numerals.
-# TODO: Enable the library to only validate Roman numerals.
