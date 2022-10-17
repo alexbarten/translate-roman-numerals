@@ -73,22 +73,14 @@ def test_lower_case_multi_input():
     assert result == 16
 
 
-def test_invalid_multiples_of_5():
+@pytest.mark.parametrize("multinumeral", ['vv', 'll', 'dd', 'cxvvi'])
+def test_invalid_multiples_of_5(multinumeral):
     # Multiples of 5 (and 50, 500) are not allowed,
     # because they would be a duplicate of the next Roman numeral.
 
     translator = RomanNumeralTranslator()
 
-    result = translator._validate_multinumerals('vv')
-    assert result is False
-
-    result = translator._validate_multinumerals('ll')
-    assert result is False
-
-    result = translator._validate_multinumerals('dd')
-    assert result is False
-
-    result = translator._validate_multinumerals('cxvvi')
+    result = translator._validate_multinumerals(multinumeral)
     assert result is False
 
 
