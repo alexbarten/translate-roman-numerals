@@ -27,6 +27,24 @@ def test_validate_each_numeral():
     assert result is None
 
 
+@pytest.mark.parametrize('multinumeral', ['vv', 'll', 'dd', 'cxvvi'])
+def test_invalid_multiples_of_5(multinumeral):
+    # Multiples of 5 (and 50, 500) are not allowed,
+    # because they would be a duplicate of the next Roman numeral.
+
+    translator = RomanNumeralTranslator()
+
+    result = translator._validate_multinumerals(multinumeral)
+    assert result is False
+
+
+def test_valid_multiples():
+    translator = RomanNumeralTranslator()
+
+    result = translator._validate_multinumerals('cxxvi')
+    assert result is True
+
+
 def test_lower_case_single_input():
     translator = RomanNumeralTranslator()
 
@@ -71,24 +89,6 @@ def test_lower_case_multi_input():
 
     result = translator.calculate_numeral('xvi')
     assert result == 16
-
-
-@pytest.mark.parametrize('multinumeral', ['vv', 'll', 'dd', 'cxvvi'])
-def test_invalid_multiples_of_5(multinumeral):
-    # Multiples of 5 (and 50, 500) are not allowed,
-    # because they would be a duplicate of the next Roman numeral.
-
-    translator = RomanNumeralTranslator()
-
-    result = translator._validate_multinumerals(multinumeral)
-    assert result is False
-
-
-def test_valid_multiples():
-    translator = RomanNumeralTranslator()
-
-    result = translator._validate_multinumerals('cxxvi')
-    assert result is True
 
 
 @pytest.mark.parametrize('subtractor, sum',
