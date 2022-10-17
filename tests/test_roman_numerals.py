@@ -3,7 +3,7 @@ import pytest
 from roman_numerals.roman_numerals import RomanNumeralTranslator
 
 
-@pytest.mark.parametrize("numeral, arabic",
+@pytest.mark.parametrize("singlenumeral, arabic",
                          [('I', 1),
                           ('V', 5),
                           ('X', 10),
@@ -11,10 +11,10 @@ from roman_numerals.roman_numerals import RomanNumeralTranslator
                           ('C', 100),
                           ('D', 500),
                           ('M', 1000)])
-def test_translate_single_numeral(numeral, arabic):
+def test_translate_single_numeral(singlenumeral, arabic):
     translator = RomanNumeralTranslator()
 
-    result = translator._translate(numeral)
+    result = translator._translate(singlenumeral)
     assert result == arabic
 
 
@@ -34,22 +34,16 @@ def test_lower_case_single_input():
     assert result == 1
 
 
-def test_transform_multi_numerals():
-    # Translate Roman combined numerals to series of numbers
-    # and calculate them
+@pytest.mark.parametrize("multinumeral, arabic",
+                         [('II', 2),
+                          ('XX', 20),
+                          ('DX', 510),
+                          ('MDCLXVI', 1666)])
+def test_transform_multi_numerals(multinumeral, arabic):
     translator = RomanNumeralTranslator()
 
-    result = translator.calculate_numeral('II')
-    assert result == 2
-
-    result = translator.calculate_numeral('XX')
-    assert result == 20
-
-    result = translator.calculate_numeral('DX')
-    assert result == 510
-
-    result = translator.calculate_numeral('MDCLXVI')
-    assert result == 1666
+    result = translator.calculate_numeral(multinumeral)
+    assert result == arabic
 
 
 def test_partial_invalid_multi_numerals():
