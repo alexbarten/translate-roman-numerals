@@ -27,6 +27,13 @@ def test_validate_each_numeral():
     assert result is None
 
 
+def test_lower_case_single_input():
+    translator = RomanNumeralTranslator()
+
+    result = translator._translate('i')
+    assert result == 1
+
+
 @pytest.mark.parametrize('multinumeral', ['vv', 'll', 'dd', 'cxvvi'])
 def test_invalid_multiples_of_5(multinumeral):
     # Multiples of 5 (and 50, 500) are not allowed,
@@ -45,13 +52,6 @@ def test_valid_multiples():
     assert result is True
 
 
-def test_lower_case_single_input():
-    translator = RomanNumeralTranslator()
-
-    result = translator._translate('i')
-    assert result == 1
-
-
 @pytest.mark.parametrize('multinumeral, arabic',
                          [('II', 2),
                           ('XX', 20),
@@ -64,13 +64,14 @@ def test_transform_multi_numerals(multinumeral, arabic):
     assert result == arabic
 
 
-def test_partial_invalid_multi_numerals():
+@pytest.mark.parametrize('partial_invalid', ['Ij', '-X', 'C++', 'M*M'])
+def test_partial_invalid_multi_numerals(partial_invalid):
     # If we cannot summarize the values because of one or more illegal
     # numerals, we want the result to be None.
 
     translator = RomanNumeralTranslator()
 
-    result = translator.calculate_numeral('Ij')
+    result = translator.calculate_numeral(partial_invalid)
     assert result is None
 
 
