@@ -32,8 +32,9 @@ class RomanNumeralTranslator:
             boolean: True if valid, else False.
         """
 
-        invalid_doubles = ['vv', 'll', 'dd']
-        if any(i in multinumeral for i in invalid_doubles):
+        invalid_multinumerals = ['vv', 'll', 'dd',
+                                 'iiii', 'xxxx', 'cccc', 'mmmm']
+        if any(i in multinumeral for i in invalid_multinumerals):
             return False
         else:
             return True

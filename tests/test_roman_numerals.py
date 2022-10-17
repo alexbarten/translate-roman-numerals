@@ -45,6 +45,15 @@ def test_invalid_multiples_of_5(multinumeral):
     assert result is False
 
 
+def test_invalid_equal_multiples_over_3():
+    # Equal multiples of more than 3 numerals are not valid
+
+    translator = RomanNumeralTranslator()
+
+    result = translator._validate_multinumerals('iiii')
+    assert result is False
+
+
 def test_valid_multiples():
     translator = RomanNumeralTranslator()
 
