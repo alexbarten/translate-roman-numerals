@@ -36,8 +36,29 @@ class RomanNumeralTranslator:
                                  'iiii', 'xxxx', 'cccc', 'mmmm']
         if any(i in multinumeral for i in invalid_multinumerals):
             return False
-        else:
-            return True
+
+        self._create_list_of_arabic_numbers(multinumeral)
+        prev_number = 0
+
+        for number in self.transformed_numbers:
+            if prev_number in [5, 50, 500]:
+                if number > prev_number:
+                    return False
+            prev_number = number
+
+        return True
+
+    def _create_list_of_arabic_numbers(self, numeral):
+        """Tranform each Roman numeral in an Arabic number and store it
+        into a list.
+
+        Args:
+            numeral (string): Roman numeral or multinumeral
+        """
+
+        self.transformed_numbers = []
+        for symbol in numeral:
+            self.transformed_numbers.append(self._translate(symbol))
 
     def calculate_numeral(self, numeral):
         """Calculate the value of a Roman numeral.
@@ -53,18 +74,18 @@ class RomanNumeralTranslator:
             or None when translation was not possible.
         """
 
-        translation_list = []
-        for symbol in numeral:
-            translation_list.append(self._translate(symbol))
+        self._create_list_of_arabic_numbers(numeral)
 
         try:
             pos = 0
-            for number in translation_list:
+            for number in self.transformed_numbers:
                 if pos > 0:
-                    if translation_list[pos-1] < translation_list[pos]:
-                        translation_list[pos-1] = -translation_list[pos-1]
+                    if self.transformed_numbers[pos-1] < \
+                       self.transformed_numbers[pos]:
+                        self.transformed_numbers[pos-1] = \
+                         -self.transformed_numbers[pos-1]
                 pos += 1
-            return sum((number) for number in translation_list)
+            return sum((number) for number in self.transformed_numbers)
 
         except TypeError:
             return None

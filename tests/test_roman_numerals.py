@@ -54,6 +54,14 @@ def test_invalid_equal_multiples_over_3():
     assert result is False
 
 
+@pytest.mark.parametrize('multinumeral', ['vx', 'vl', 'ld', 'dm'])
+def test_invalid_5_before_higher_number(multinumeral):
+    translator = RomanNumeralTranslator()
+
+    result = translator._validate_multinumerals(multinumeral)
+    assert result is False
+
+
 def test_valid_multiples():
     translator = RomanNumeralTranslator()
 

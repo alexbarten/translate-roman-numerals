@@ -44,4 +44,7 @@ TODO: Add exception handling: illegal combinations
       like 'VV', 'IL'. We should still give back None, but we might  
       raise an exception or add a return code as well...  
 TODO: Transform from Arabic numbers to Roman numerals.  
-TODO: Enable the library to only validate Roman numerals.  
+TODO: Enable the library to only _validate_ Roman numerals.  
+TODO: Disallow repeating steps, like MCMCM. With this check  
+      in place, we should be able to prevent a number higher  
+      than 3999, which is the highest allowed number.
