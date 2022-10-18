@@ -2,6 +2,8 @@ import pytest
 
 from roman_numerals.roman_numerals import RomanNumeralTranslator
 
+TRANSLATOR = RomanNumeralTranslator()
+
 
 @pytest.mark.parametrize('singlenumeral, arabic',
                          [('I', 1),
@@ -12,25 +14,19 @@ from roman_numerals.roman_numerals import RomanNumeralTranslator
                           ('D', 500),
                           ('M', 1000)])
 def test_translate_single_numeral(singlenumeral, arabic):
-    translator = RomanNumeralTranslator()
-
-    result = translator._translate(singlenumeral)
+    result = TRANSLATOR._translate(singlenumeral)
     assert result == arabic
 
 
 def test_validate_each_numeral():
     # By design, a non-Roman numeral will not be translated, hence
     # the translation result will be None.
-    translator = RomanNumeralTranslator()
-
-    result = translator._translate('J')
+    result = TRANSLATOR._translate('J')
     assert result is None
 
 
 def test_lower_case_single_input():
-    translator = RomanNumeralTranslator()
-
-    result = translator._translate('i')
+    result = TRANSLATOR._translate('i')
     assert result == 1
 
 
@@ -38,29 +34,20 @@ def test_lower_case_single_input():
 def test_invalid_multiples_of_5(multinumeral):
     # Multiples of 5 (and 50, 500) are not allowed,
     # because they would be a duplicate of the next Roman numeral.
-
-    translator = RomanNumeralTranslator()
-
-    result = translator._validate_multinumerals(multinumeral)
+    result = TRANSLATOR._validate_multinumerals(multinumeral)
     assert result is False
 
 
 def test_invalid_equal_multiples_over_3():
     # Equal multiples of more than 3 numerals are not valid
-
-    translator = RomanNumeralTranslator()
-
-    result = translator._validate_multinumerals('iiii')
+    result = TRANSLATOR._validate_multinumerals('iiii')
     assert result is False
 
 
 @pytest.mark.parametrize('multinumeral', ['vx', 'vl', 'ld', 'dm'])
 def test_invalid_5_before_higher_number(multinumeral):
     # 'Fives' cannot be in front of a greater number.
-
-    translator = RomanNumeralTranslator()
-
-    result = translator._validate_multinumerals(multinumeral)
+    result = TRANSLATOR._validate_multinumerals(multinumeral)
     assert result is False
 
 
@@ -68,17 +55,12 @@ def test_invalid_5_before_higher_number(multinumeral):
 def test_non_allowed_subtractors(small_subtractor):
     # I cannot subtract from anything greater than X,
     # X not from greater than C.
-
-    translator = RomanNumeralTranslator()
-
-    result = translator._validate_multinumerals(small_subtractor)
+    result = TRANSLATOR._validate_multinumerals(small_subtractor)
     assert result is False
 
 
 def test_valid_multiples():
-    translator = RomanNumeralTranslator()
-
-    result = translator._validate_multinumerals('cxxvi')
+    result = TRANSLATOR._validate_multinumerals('cxxvi')
     assert result is True
 
 
@@ -88,9 +70,7 @@ def test_valid_multiples():
                           ('DX', 510),
                           ('MDCLXVI', 1666)])
 def test_transform_multi_numerals(multinumeral, arabic):
-    translator = RomanNumeralTranslator()
-
-    result = translator.calculate_numeral(multinumeral)
+    result = TRANSLATOR.calculate_numeral(multinumeral)
     assert result == arabic
 
 
@@ -98,27 +78,19 @@ def test_transform_multi_numerals(multinumeral, arabic):
 def test_partial_invalid_multi_numerals(partial_invalid):
     # If we cannot summarize the values because of one or more illegal
     # numerals, we want the result to be None.
-
-    translator = RomanNumeralTranslator()
-
-    result = translator.calculate_numeral(partial_invalid)
+    result = TRANSLATOR.calculate_numeral(partial_invalid)
     assert result is None
 
 
 def test_fully_invalid_multi_numerals():
     # If we cannot summarize the values because of one or more illegal
     # numerals, we want the result to be None.
-
-    translator = RomanNumeralTranslator()
-
-    result = translator.calculate_numeral('ajb')
+    result = TRANSLATOR.calculate_numeral('ajb')
     assert result is None
 
 
 def test_lower_case_multi_input():
-    translator = RomanNumeralTranslator()
-
-    result = translator.calculate_numeral('xvi')
+    result = TRANSLATOR.calculate_numeral('xvi')
     assert result == 16
 
 
@@ -130,7 +102,5 @@ def test_lower_case_multi_input():
                           ('CD', 400),
                           ('CM', 900)])
 def test_subtractive_notation(subtractor, sum):
-    translator = RomanNumeralTranslator()
-
-    result = translator.calculate_numeral(subtractor)
+    result = TRANSLATOR.calculate_numeral(subtractor)
     assert result == sum
