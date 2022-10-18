@@ -18,14 +18,14 @@ def test_translate_single_numeral(singlenumeral, arabic):
     assert result == arabic
 
 
-def test_validate_each_numeral():
+def test_validate_unknown_single_numeral():
     # By design, a non-Roman numeral will not be translated, hence
     # the translation result will be None.
     result = TRANSLATOR._translate('J')
     assert result is None
 
 
-def test_lower_case_single_input():
+def test_process_lower_case_numeral():
     result = TRANSLATOR._translate('i')
     assert result == 1
 
