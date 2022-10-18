@@ -44,6 +44,13 @@ class RomanNumeralTranslator:
             if prev_number in [5, 50, 500]:
                 if number > prev_number:
                     return False
+
+            if prev_number == 1 and number > 10:
+                return False
+
+            if prev_number == 10 and number > 100:
+                return False
+
             prev_number = number
 
         return True

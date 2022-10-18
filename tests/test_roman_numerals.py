@@ -56,9 +56,22 @@ def test_invalid_equal_multiples_over_3():
 
 @pytest.mark.parametrize('multinumeral', ['vx', 'vl', 'ld', 'dm'])
 def test_invalid_5_before_higher_number(multinumeral):
+    # 'Fives' cannot be in front of a greater number.
+
     translator = RomanNumeralTranslator()
 
     result = translator._validate_multinumerals(multinumeral)
+    assert result is False
+
+
+@pytest.mark.parametrize('small_subtractor', ['il', 'im', 'xd', 'xm'])
+def test_non_allowed_subtractors(small_subtractor):
+    # I cannot subtract from anything greater than X,
+    # X not from greater than C.
+
+    translator = RomanNumeralTranslator()
+
+    result = translator._validate_multinumerals(small_subtractor)
     assert result is False
 
 
